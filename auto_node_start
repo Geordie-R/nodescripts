@@ -12,14 +12,11 @@ export stopfile="/home/remmecommunity/stop.sh"
 export rcstartup="/etc/rc.local"
 ##do not modify the line below
 export isStartupConfiguredForStart=0 
-
 ##Just a few text colour parameters below: ignore them
 export green=`tput setaf 2`
 export red=`tput setaf 1`
 export reset=`tput sgr0`
-
 ##PARAMETERS END ########
-
 
 ## Lets go to the home folder
 cd /home/ 
@@ -30,7 +27,6 @@ chmod 770 remmecommunity
 ## Lets use this as our current directory for now
 cd /home/remmecommunity
 
-
 ##Remove the file if it exists as we might be applying a new version number at the top of this script
 ##Creates a file chmod 770 start.shcalled start.sh which we will use to hold our startup command
 ##Gives the group members and the user who created it read,write and execute privs
@@ -38,25 +34,23 @@ if [ -f $startfile ]; then
 	echo "start.sh exists, we will remove and recreate it"
 	rm $startfile	
 	touch $startfile		
-	chmod 770 $startfile	
-
-	
+	chmod 770 $startfile		
 else
 	echo "start.sh flle doesnt exist, we will create it!"
 	touch $startfile		
 	chmod 770 $startfile		
 fi
 
-
-### Start of Create start.sh File ###
+### Lets fill the start.sh file with code ###
 ### We will create a start.sh file which we can easily execute with './home/remmecommunity/start.sh'###
 echo '#!/bin/bash' >> "$startfile"
 echo "cd $REMME_CORE_PATH" >> "$startfile"
 echo "sudo make run_bg" >> "$startfile"
-
 ### End of Create File ###
 
-
+##Remove the stop.sh file if it exists as we might be applying a new version number at the top of this script
+##Creates a stop file chmod 770 called start.sh which we will use to hold our stop command
+##Gives the group members and the user who created it read,write and execute privs
 if [ -f $stopfile ] ; then	
 rm $stopfile
 touch $stopfile
@@ -67,7 +61,7 @@ else
 	chmod 770 $stopfile	
 fi
 
-### Start of Create Stop.sh File ###
+### Lets fill the Stop.sh File with code###
 cd /home/remmecommunity/
 echo '#!/bin/bash' >> "$stopfile"
 echo "cd $REMME_CORE_PATH" >> "$stopfile"
@@ -75,20 +69,13 @@ echo "sudo make stop" >> "$stopfile"
 
 ### End of Create Stop.sh File ###
 
-
-
-
-
-
-
 if [ -e $rcstartup ] ; then	
-echo "startup file already exists - thats fine"
+echo "startup file already exists - ${green}thats fine ${reset}"
 else
 	echo "$rcstartup flle doesnt exist, we will create it!"
 	touch $rcstartup	
 	chmod 770 $stopfile	
 fi
-
 
 if grep -q "$startfile" "$rcstartup"; then
      echo "${green}Its already configured to start at startup! You're good to go!${reset}"
@@ -96,9 +83,3 @@ else
 echo ".$startfile" >> "$rcstartup"
 echo "${green}Complete ${reset}"
 fi
-
-
-
-
-
-
