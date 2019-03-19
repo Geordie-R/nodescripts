@@ -84,14 +84,16 @@ echo "sudo make stop" >> "$stopfile"
 
 if [ -e $rcstartup ] ; then	
 echo "startup file already exists - ${green}thats fine ${reset}"
+chmod 775 $rcstartup 
 else
 	echo "$rcstartup flle doesnt exist, we will create it!"
 	touch $rcstartup	
-	chmod 770 $stopfile	
+	chmod 775 $rcstartup	
 fi
 
 if grep -q "$communitypath$startfile" "$rcstartup"; then
      echo "${green}Its already configured to start at startup! You're good to go!${reset}"
+     
 else
 echo '!/bin/sh -e' >> "$rcstartup"
 echo "$communitypath$startfile" >> "$rcstartup"
