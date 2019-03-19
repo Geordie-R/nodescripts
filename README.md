@@ -24,12 +24,22 @@ ls
 You will see the files.
 <br />
 <p>Try all four of the scripts
-<ul>
-  <li>stop.sh</li>
- <li>start.sh</li>
- <li>check.sh</li>
- <li>checkssl.sh</li>
-</ul>
+  
+  ```
+  stop.sh
+  ```
+  
+  ```
+  start.sh
+  ```
+  
+  ```
+  check.sh
+  ```
+  
+  ```
+  checkssl.sh
+  ```
 <p>
 You could just call the absolute path of the scripts like so</p>
 
