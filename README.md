@@ -14,7 +14,7 @@
   <li>Change the next line further down: export DOMAIN=YOUR_DOMAIN_OR_IP.  If you have a domain name on your node type your domain name in place of YOUR_DOMAIN_OR_IP. if you had a domain called mynoderules.com then this would become export DOMAIN=mynoderules.com   If you have not bought a domain name input your ip address instead. So this would become DOMAIN=123.123.123.123 where those numbers represent your nodes ip address. Be sure to change it.</li>
 <li>Once that is done copy all of the code in notepad by going to Edit > Select All then Edit > Copy.  Then paste it into your command prompt or whichever terminal you are using e.g. putty.</li>
   
-  <li>Perform a reboot of your server by either using the 'reboot' command or use your VPS restart server command<li>
+  <li>Perform a reboot of your server by either using the 'reboot' command or use your VPS restart server command</li>
 <li>Close any command prompt or terminal windows and reconnect to your node</li>
 </ol>
   </p>
