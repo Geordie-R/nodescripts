@@ -50,11 +50,9 @@ You could just call the absolute path of the scripts like so</p>
 ```
 
 
-<p>When you reboot the server it will automatically run 
+<p>When you reboot the server it will automatically run the following code below after 3 seconds</p>
+  
   ```
   /home/remmecommunity/start.sh
   ```
-  
-  after 3 seconds</p>
-
 <p style='weight:bold;'>Catch me on telegram if you need anything!</p>
