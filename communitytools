@@ -11,7 +11,7 @@ apt-get install nano 	##Installs a text editor called nano. Only ever need to do
 export REMME_CORE_RELEASE=0.7.0-alpha
 ##-------------------------------------##
 ## Change the domain name below to your domain. If you have not got a domain, use your IP address instead.
-export DOMAIN=YOUR_DOMAIN_NAME.xyz
+export DOMAIN=YOUR_DOMAIN_NAME_OR_IP
 ##-------------------------------------##
 ## Do not modify the line below
 export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE
@@ -93,6 +93,7 @@ fi
 if grep -q "$communitypath$startfile" "$rcstartup"; then
      echo "${green}Its already configured to start at startup! You're good to go!${reset}"
 else
+echo '#!/bin/bash' >> "$rcstartup"
 echo ".$communitypath$startfile" >> "$rcstartup"
 echo "${green}Complete ${reset}"
 fi
