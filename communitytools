@@ -96,6 +96,7 @@ if grep -q "$communitypath$startfile" "$rcstartup"; then
      
 else
 echo '!/bin/sh -e' >> "$rcstartup"
+echo 'sleep 3s' >> "$rcstartup" ##added a 3 seconds wait for safety to make sure server is more settled
 echo "$communitypath$startfile" >> "$rcstartup"
 echo "${green}Complete ${reset}"
 fi
