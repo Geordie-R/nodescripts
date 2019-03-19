@@ -95,7 +95,7 @@ if grep -q "$communitypath$startfile" "$rcstartup"; then
      echo "${green}Its already configured to start at startup! You're good to go!${reset}"
      
 else
-echo '!/bin/sh -e' >> "$rcstartup"
+echo '#!/bin/sh -e' >> "$rcstartup"
 echo 'sleep 3s' >> "$rcstartup" ##added a 3 seconds wait for safety to make sure server is more settled
 echo "$communitypath$startfile" >> "$rcstartup"
 echo "${green}Complete ${reset}"
