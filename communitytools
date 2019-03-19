@@ -1,0 +1,147 @@
+##This file will end up being an all in one toolkit that can be ran as many times as you wish.  It will create handy sh files in the remmecommunity folder
+##
+
+## DO NOT USE THIS FILE YET THIS IS A WORK IN PROGRESS ##
+
+apt-get install nano 	##Installs a text editor called nano. Only ever need to do once per new server install
+
+##PARAMETERS START ##########
+## This is the release number.  Please check what release you have installed and adjust if needed below.
+export REMME_CORE_RELEASE=0.7.0-alpha
+export DOMAIN=mn1.geordier.co.uk
+##Do not modify the line below
+export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE
+##Below is a startup script we create to make the start up call easier and one line.	
+export communitypath="/home/remmecommunity/"
+export startfile="start.sh"
+export stopfile="stop.sh"	
+export checkhttpfile="check.sh"	
+export checkhttpsfile="checkssl.sh"	
+##do not modify the line below
+export rcstartup="/etc/rc.local"
+##do not modify the line below
+export isStartupConfiguredForStart=0 
+##Just a few text colour parameters below: ignore them
+export green=`tput setaf 2`
+export red=`tput setaf 1`
+export reset=`tput sgr0`
+##PARAMETERS END ########
+
+## Lets go to the home folder
+cd /home/ 
+## Lets make a directory called remmecommunity and not care if it exists
+mkdir -p remmecommunity		
+## Lets make the permissions relaxed for group members and the user who created it read,write and execute privs
+chmod 770 remmecommunity
+## Lets use this as our current directory for now
+cd /home/remmecommunity
+
+##Remove the file if it exists as we might be applying a new version number at the top of this script
+##Creates a file chmod 770 start.shcalled start.sh which we will use to hold our startup command
+##Gives the group members and the user who created it read,write and execute privs
+if [ -f $communitypath$startfile ]; then	
+	echo "start.sh exists, we will remove and recreate it"
+	rm $communitypath$startfile	
+	touch $communitypath$startfile		
+	chmod 770 $communitypath$startfile		
+else
+	echo "start.sh flle doesnt exist, we will create it!"
+	touch $communitypath$startfile		
+	chmod 770 $communitypath$startfile		
+fi
+
+### Lets fill the start.sh file with code ###
+### We will create a start.sh file which we can easily execute with './home/remmecommunity/start.sh'###
+cd $communitypath
+echo '#!/bin/bash' >> "$startfile"
+echo "cd $REMME_CORE_PATH" >> "$startfile"
+echo "sudo make run_bg" >> "$startfile"
+### End of Create File ###
+
+##Remove the stop.sh file if it exists as we might be applying a new version number at the top of this script
+##Creates a stop file chmod 770 called start.sh which we will use to hold our stop command
+##Gives the group members and the user who created it read,write and execute privs
+cd $communitypath
+if [ -f $stopfile ] ; then	
+rm $stopfile
+touch $stopfile
+chmod 770 $stopfile
+else
+	echo "stop.sh flle doesnt exist, we will create it!"
+	touch $stopfile		
+	chmod 770 $stopfile	
+fi
+
+### Lets fill the Stop.sh File with code###
+cd $communitypath
+echo '#!/bin/bash' >> "$stopfile"
+echo "cd $REMME_CORE_PATH" >> "$stopfile"
+echo "sudo make stop" >> "$stopfile"
+
+### End of Create Stop.sh File ###
+
+if [ -e $rcstartup ] ; then	
+echo "startup file already exists - ${green}thats fine ${reset}"
+else
+	echo "$rcstartup flle doesnt exist, we will create it!"
+	touch $rcstartup	
+	chmod 770 $stopfile	
+fi
+
+if grep -q "$startfile" "$rcstartup"; then
+     echo "${green}Its already configured to start at startup! You're good to go!${reset}"
+else
+echo ".$startfile" >> "$rcstartup"
+echo "${green}Complete ${reset}"
+fi
+
+
+##Remove the checkhttp.sh file if it exists as we might be applying a new version number at the top of this script
+##Creates a checkhttp file chmod 770 called checkhttp.sh which we will use to hold the standard remme check command
+##Gives the group members and the user who created it read,write and execute privs
+cd $communitypath
+if [ -f $checkhttpfile ] ; then	
+rm $checkhttpfile
+touch $checkhttpfile
+chmod 770 $checkhttpfile
+else
+	echo "checkhttpfile flle doesnt exist, we will create it!"
+	touch $checkhttpfile		
+	chmod 770 $checkhttpfile	
+fi
+
+### Lets fill the checkhttpfile.sh File with code###
+cd /home/remmecommunity/
+echo '#!/bin/bash' >> "$checkhttpfile"
+echo "export NODE_IP_ADDRESS=$DOMAIN" >> "$checkhttpfile"
+echo "curl -X POST http://$DOMAIN:8080 -H 'Content-Type: application/json' -d \\" >> "$checkhttpfile"
+echo "'{\"jsonrpc\":\"2.0\",\"id\":\"11\",\"method\":\"get_node_config\",\"params\":{}}' | python3 -m json.tool" >> "$checkhttpfile"
+.$checkhttpfile
+### End of Create Stop.sh File ###
+
+##Remove the checkssl.sh file if it exists as we might be applying a new version number at the top of this script
+##Creates a checkssl file chmod 770 called checkssl.sh which we will use to hold the standard remme check command
+##Gives the group members and the user who created it read,write and execute privs
+if [ -f $checkhttpsfile ] ; then	
+rm $checkhttpsfile
+touch $checkhttpsfile
+chmod 770 $checkhttpsfile
+else
+	echo "checkhttpsfile flle doesnt exist, we will create it!"
+	touch $checkhttpsfile		
+	chmod 770 $checkhttpsfile	
+fi
+
+### Lets fill the checkhttpsfile.sh File with code###
+cd /home/remmecommunity/
+echo '#!/bin/bash' >> "$checkhttpsfile"
+echo "export NODE_IP_ADDRESS=$DOMAIN" >> "$checkhttpsfile"
+echo "curl -X POST https://$DOMAIN -H 'Content-Type: application/json' -d \\" >> "$checkhttpsfile"
+echo "'{\"jsonrpc\":\"2.0\",\"id\":\"11\",\"method\":\"get_node_config\",\"params\":{}}' | python3 -m json.tool" >> "$checkhttpsfile"
+$checkhttpsfile
+### End of Create Stop.sh File ###
+
+echo "To ${green}run${reset} your node type: $communitypath$startfile"
+echo "To ${red}stop${reset} your node type: $communitypath$startfile"
+echo "To ${green}check${reset} your node and you dont have an SSL certificate type: $communitypath$checkhttpfile"
+echo "To ${green}check${reset} your node if you have installed an SSL certificate type: $communitypath$checkhttpsfile"
