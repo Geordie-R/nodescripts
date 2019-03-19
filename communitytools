@@ -93,7 +93,7 @@ fi
 if grep -q "$communitypath$startfile" "$rcstartup"; then
      echo "${green}Its already configured to start at startup! You're good to go!${reset}"
 else
-echo '#!/bin/bash' >> "$rcstartup"
+echo '!/bin/sh -e' >> "$rcstartup"
 echo "$communitypath$startfile" >> "$rcstartup"
 echo "${green}Complete ${reset}"
 fi
