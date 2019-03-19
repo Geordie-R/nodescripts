@@ -8,7 +8,7 @@ apt-get install nano 	##Installs a text editor called nano. Only ever need to do
 ##PARAMETERS START ##########
 ## This is the release number.  Please check what release you have installed and adjust if needed below.
 export REMME_CORE_RELEASE=0.7.0-alpha
-export DOMAIN=mn1.geordier.co.uk
+export DOMAIN=YOUR_DOMAIN_NAME.com
 ##Do not modify the line below
 export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE
 ##Below is a startup script we create to make the start up call easier and one line.	
