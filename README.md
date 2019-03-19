@@ -32,13 +32,28 @@ You will see the files.
 </ul>
 <p>
 You could just call the absolute path of the scripts like so</p>
-```/home/remmecommunity/start.sh```
-```/home/remmecommunity/stop.sh```
-```/home/remmecommunity/check.sh```
-```/home/remmecommunity/checkssl.sh```
+
+```
+/home/remmecommunity/start.sh
+```
+
+```
+/home/remmecommunity/stop.sh
+```
+
+```
+/home/remmecommunity/check.sh
+```
+
+```
+/home/remmecommunity/checkssl.sh
+```
+
 
 <p>When you reboot the server it will automatically run 
-  ```/home/remmecommunity/start.sh ```
+  ```
+  /home/remmecommunity/start.sh
+  ```
   
   after 3 seconds</p>
 
