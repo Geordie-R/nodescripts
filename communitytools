@@ -1,8 +1,6 @@
 ##This file is an all in one tool that can be ran as many times as you wish.  It will create handy sh files in the remmecommunity folder
 ##
 
-## DO NOT USE THIS FILE YET THIS IS A WORK IN PROGRESS ##
-
 apt-get install nano 	##Installs a text editor called nano. Only ever need to do once per new server install
 
 ## PARAMETERS START ##########
