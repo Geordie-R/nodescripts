@@ -18,7 +18,13 @@ export REMME_CORE_RELEASE="0.7.0-alpha"
 export DOMAIN_OR_IP="your-domain-or-ip-here.com"
 export INSTALL_LOCATION="/home/remmecommunity/"
 ## Parameters End ##
+## Lets make a directory called remmecommunity and not care if it exists
+mkdir -p $INSTALL_LOCATION		
+## Lets make the permissions relaxed for group members and the user who created it read,write and execute privs
+chmod 770 $INSTALL_LOCATION
+## Now download the main script
 curl https://raw.githubusercontent.com/Geordie-R/nodescripts/master/communitytools | sudo tee /home/remmecommunity/install.sh > /home/remmecommunity/install.sh
+## Do some find and replaces
 sudo -i sed -i "s/[YOUR_DOMAIN_OR_IP]/$DOMAIN_OR_IP/g" /home/remmecommunity/install.sh
 sudo -i sed -i "s/[REMME_CORE_RELEASE]/$REMME_CORE_RELEASE/g" /home/remmecommunity/install.sh
 sudo -i sed -i "s/[INSTALL_LOCATION]/$INSTALL_LOCATION/g" /home/remmecommunity/install.sh
