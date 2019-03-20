@@ -7,18 +7,21 @@
 <li>start.sh - starts the master node in background mode</li>
 <li>stop.sh - stops the masternode</li>
 <li>check.sh - checks the operations of your node using standard http</li>
-<li>checkssl.sh - checks the operations of your node using standard SSL.  For this to work you must have completed the SSL section of the advanced user guide</li></ul>
+<li>checkssl.sh - checks the operations of your node using standard SSL.  For this to work you must have completed the SSL section of the advanced user guide</li>
+ <li>Install.sh - left over from install for reinstallation / debugging.</li>
+</ul>
 <p>
  
- ```
- 
+ ``` 
 ## Parameters Start ##
 export REMME_CORE_RELEASE=0.7.0-alpha
 export DOMAIN_OR_IP=your-domain-or-ip-here.com
+export INSTALL_LOCATION="/home/remmecommunity/
 ## Parameters End ##
 curl https://raw.githubusercontent.com/Geordie-R/nodescripts/master/communitytools | sudo tee /home/remmecommunity/install.sh > /home/remmecommunity/install.sh
-sudo -i sed -i "s/YOUR_DOMAIN_OR_IP/$DOMAIN_OR_IP/g" /home/remmecommunity/install.sh
-sudo -i sed -i "s/REMME_CORE_RELEASE/$REMME_CORE_RELEASE/g" /home/remmecommunity/install.sh
+sudo -i sed -i "s/[YOUR_DOMAIN_OR_IP]/$DOMAIN_OR_IP/g" /home/remmecommunity/install.sh
+sudo -i sed -i "s/[REMME_CORE_RELEASE]/$REMME_CORE_RELEASE/g" /home/remmecommunity/install.sh
+sudo -i sed -i "s/[INSTALL_LOCATION]/$INSTALL_LOCATION/g" /home/remmecommunity/install.sh
 sudo chmod 770 /home/remmecommunity/install.sh
 /home/remmecommunity/install.sh
  
