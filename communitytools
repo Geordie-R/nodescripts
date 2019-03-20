@@ -55,7 +55,11 @@ fi
 cd $communitypath
 echo '#!/bin/bash' >> "$startfile"
 echo "cd $REMME_CORE_PATH" >> "$startfile"
+echo "sudo docker rm $(sudo docker ps -a -q) -f" >> "$startfile"
+echo "sudo docker rmi $(sudo docker images -q) -f" >> "$startfile"
 echo "sudo make run_bg" >> "$startfile"
+echo "sudo docker-compose -f remme-mon-stack-1.2.0/docker-compose.yml up -d" >> "$startfile"
+echo "sudo systemctl restart nginx" >> "$startfile"
 ### End of Create File ###
 
 ##Remove the stop.sh file if it exists as we might be applying a new version number at the top of this script
