@@ -9,9 +9,13 @@ export REMME_CORE_RELEASE=[REMME_CORE_RELEASE]          ## e.g. 0.7.0-alpha
 ## Change the domain name below to your domain. If you have not got a domain, use your IP address instead.
 export DOMAIN=[YOUR_DOMAIN_OR_IP]
 ##-------------------------------------##
+## This is the install location for the remme community folder
+export COMMUNITYPATH="[INSTALL_LOCATION]" ##e.g /home/remmecommunity/
+##-------------------------------------##
+
+
 ## Do not modify the line below
 export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE	
-export communitypath="/home/remmecommunity/"
 export startfile="start.sh"
 export stopfile="stop.sh"	
 export checkhttpfile="check.sh"	
@@ -36,20 +40,20 @@ cd /home/remmecommunity
 ##Remove the file if it exists as we might be applying a new version number at the top of this script
 ##Creates a file chmod 770 start.shcalled start.sh which we will use to hold our startup command
 ##Gives the group members and the user who created it read,write and execute privs
-if [ -f $communitypath$startfile ]; then	
+if [ -f $COMMUNITYPATH$startfile ]; then	
 	echo "start.sh exists, we will remove and recreate it"
-	rm $communitypath$startfile	
-	touch $communitypath$startfile		
-	chmod 770 $communitypath$startfile		
+	rm $COMMUNITYPATH$startfile	
+	touch $COMMUNITYPATH$startfile		
+	chmod 770 $COMMUNITYPATH$startfile		
 else
 	echo "start.sh flle doesnt exist, we will create it!"
-	touch $communitypath$startfile		
-	chmod 770 $communitypath$startfile		
+	touch $COMMUNITYPATH$startfile		
+	chmod 770 $COMMUNITYPATH$startfile		
 fi
 
 ### Lets fill the start.sh file with code ###
 ### We will create a start.sh file which we can easily execute with './home/remmecommunity/start.sh'###
-cd $communitypath
+cd $COMMUNITYPATH
 echo '#!/bin/bash' >> "$startfile"
 echo "cd $REMME_CORE_PATH" >> "$startfile"
 echo "sudo docker rm $(sudo docker ps -a -q) -f" >> "$startfile"
@@ -62,7 +66,7 @@ echo "sudo systemctl restart nginx" >> "$startfile"
 ##Remove the stop.sh file if it exists as we might be applying a new version number at the top of this script
 ##Creates a stop file chmod 770 called start.sh which we will use to hold our stop command
 ##Gives the group members and the user who created it read,write and execute privs
-cd $communitypath
+cd $COMMUNITYPATH
 if [ -f $stopfile ] ; then	
 rm $stopfile
 touch $stopfile
@@ -74,7 +78,7 @@ else
 fi
 
 ### Lets fill the Stop.sh File with code###
-cd $communitypath
+cd $COMMUNITYPATH
 echo '#!/bin/bash' >> "$stopfile"
 echo "cd $REMME_CORE_PATH" >> "$stopfile"
 echo "sudo make stop" >> "$stopfile"
@@ -90,13 +94,13 @@ else
 	chmod 775 $rcstartup	
 fi
 
-if grep -q "$communitypath$startfile" "$rcstartup"; then
+if grep -q "$COMMUNITYPATH$startfile" "$rcstartup"; then
      echo "${green}Its already configured to start at startup! You're good to go!${reset}"
      
 else
 echo '#!/bin/sh -e' >> "$rcstartup"
 echo 'sleep 3s' >> "$rcstartup" ##added a 3 seconds wait for safety to make sure server is more settled
-echo "$communitypath$startfile" >> "$rcstartup"
+echo "$COMMUNITYPATH$startfile" >> "$rcstartup"
 echo "${green}Complete ${reset}"
 fi
 
@@ -104,7 +108,7 @@ fi
 ##Remove the checkhttp.sh file if it exists as we might be applying a new version number at the top of this script
 ##Creates a checkhttp file chmod 770 called checkhttp.sh which we will use to hold the standard remme check command
 ##Gives the group members and the user who created it read,write and execute privs
-cd $communitypath
+cd $COMMUNITYPATH
 if [ -f $checkhttpfile ] ; then	
 rm $checkhttpfile
 touch $checkhttpfile
