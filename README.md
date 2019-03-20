@@ -14,9 +14,9 @@
  
  ``` 
 ## Parameters Start ##
-export REMME_CORE_RELEASE=0.7.0-alpha
-export DOMAIN_OR_IP=your-domain-or-ip-here.com
-export INSTALL_LOCATION="/home/remmecommunity/
+export REMME_CORE_RELEASE="0.7.0-alpha"
+export DOMAIN_OR_IP="your-domain-or-ip-here.com"
+export INSTALL_LOCATION="/home/remmecommunity/"
 ## Parameters End ##
 curl https://raw.githubusercontent.com/Geordie-R/nodescripts/master/communitytools | sudo tee /home/remmecommunity/install.sh > /home/remmecommunity/install.sh
 sudo -i sed -i "s/[YOUR_DOMAIN_OR_IP]/$DOMAIN_OR_IP/g" /home/remmecommunity/install.sh
