@@ -1,15 +1,13 @@
-##This file is an all in one tool that can be ran as many times as you wish.  It will create handy sh files in the remmecommunity folder
+##This file is downloaded and ran by another script.  See the readme!  You do not run this file directly anymore!
 ##
-
-apt-get install nano 	##Installs a text editor called nano. Only ever need to do once per new server install
 
 ## PARAMETERS START ##########
 ##-------------------------------------##
 ## This is the release number.  Please check what release you have installed and adjust if needed below.
-export REMME_CORE_RELEASE=0.7.0-alpha
+export REMME_CORE_RELEASE=[REMME_CORE_RELEASE]          ## e.g. 0.7.0-alpha
 ##-------------------------------------##
 ## Change the domain name below to your domain. If you have not got a domain, use your IP address instead.
-export DOMAIN=YOUR_DOMAIN_OR_IP
+export DOMAIN=[YOUR_DOMAIN_OR_IP]
 ##-------------------------------------##
 ## Do not modify the line below
 export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE	
