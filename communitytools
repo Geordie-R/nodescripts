@@ -12,8 +12,7 @@ export REMME_CORE_RELEASE=0.7.0-alpha
 export DOMAIN=YOUR_DOMAIN_OR_IP
 ##-------------------------------------##
 ## Do not modify the line below
-export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE
-## Below is a startup script we create to make the start up call easier and one line.	
+export REMME_CORE_PATH=/home/remme-core-$REMME_CORE_RELEASE	
 export communitypath="/home/remmecommunity/"
 export startfile="start.sh"
 export stopfile="stop.sh"	
