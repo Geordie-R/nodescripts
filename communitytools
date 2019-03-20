@@ -4,13 +4,13 @@
 ## PARAMETERS START ##########
 ##-------------------------------------##
 ## This is the release number.  Please check what release you have installed and adjust if needed below.
-export REMME_CORE_RELEASE=[REMME_CORE_RELEASE]          ## e.g. 0.7.0-alpha
+export REMME_CORE_RELEASE="REPLACED_REMMECORERELEASE"          ## e.g. 0.7.0-alpha
 ##-------------------------------------##
 ## Change the domain name below to your domain. If you have not got a domain, use your IP address instead.
-export DOMAIN=[YOUR_DOMAIN_OR_IP]
+export DOMAIN="REPLACED_YOURDOMAINORIP"
 ##-------------------------------------##
 ## This is the install location for the remme community folder
-export COMMUNITYPATH="[INSTALL_LOCATION]" ##e.g /home/remmecommunity/
+export COMMUNITYPATH="REPLACED_INSTALLLOCATION" ##e.g /home/remmecommunity/
 ##-------------------------------------##
 
 
