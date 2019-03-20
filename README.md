@@ -9,9 +9,22 @@
 <li>check.sh - checks the operations of your node using standard http</li>
 <li>checkssl.sh - checks the operations of your node using standard SSL.  For this to work you must have completed the SSL section of the advanced user guide</li></ul>
 <p>
-<ol><li>Copy and paste the whole script into notepad on your own computer.  Search for notepad if you are unsure where to find it.</li>
-  <li>Change the parameters at the top regarding of your pasted code in notepad.  Change REMME_CORE_RELEASE=0.7.0-alpha to whatever version of remme you have installed.  I will always update this script once new versions become available. e.g. if remme release a 0.8.0-alpha then that line would become REMME_CORE_RELEASE=0.8.0-alpha</li>
-  <li>Change the next line further down: export DOMAIN=YOUR_DOMAIN_OR_IP.  If you have a domain name on your node type your domain name in place of YOUR_DOMAIN_OR_IP. if you had a domain called mynoderules.com then this would become export DOMAIN=mynoderules.com   If you have not bought a domain name input your ip address instead. So this would become DOMAIN=123.123.123.123 where those numbers represent your nodes ip address. Be sure to change it.</li>
+ ```
+## Parameters Start ##
+export REMME_CORE_RELEASE=0.7.0-alpha
+export DOMAIN_OR_IP=your-domain-or-ip-here.com
+## Parameters End ##
+curl https://raw.githubusercontent.com/Geordie-R/nodescripts/master/communitytools | sudo tee /home/remmecommunity/install.sh > /home/remmecommunity/install.sh
+sudo -i sed -i "s/YOUR_DOMAIN_OR_IP/$DOMAIN_OR_IP/g" /home/remmecommunity/install.sh
+sudo -i sed -i "s/REMME_CORE_RELEASE/$REMME_CORE_RELEASE/g" /home/remmecommunity/install.sh
+sudo chmod 770 /home/remmecommunity/install.sh
+/home/remmecommunity/install.sh
+  ```
+  
+  
+<ol><li>Copy and paste the code above into your putty window or command prompt</li>
+  <li>Change the parameters at the top in the parameters section.  Change   ```export REMME_CORE_RELEASE=0.7.0-alpha``` to whatever version of Remme Core you have installed.  I will always update this script once new versions become available. e.g. if remme release a 0.8.0-alpha then that line would become ```export REMME_CORE_RELEASE=0.8.0-alpha```</li>
+  <li>Change the next line further down: ```export DOMAIN_OR_IP=your-domain-or-ip-here.com```.  If you have a domain name on your node type your domain name in place of your-domain-or-ip-here.com. if you had a domain called mynoderules.com then this would become ```export DOMAIN=mynoderules.com``` . If you have not bought a domain name input your ip address instead. So this would become ```DOMAIN_OR_IP=123.123.123.123``` where those numbers represent your nodes ip address. Be sure to change it.</li>
 <li>Once that is done copy all of the code in notepad by going to Edit > Select All then Edit > Copy.  Then paste it into your command prompt or whichever terminal you are using e.g. putty.</li>
   
   <li>Perform a reboot of your server by either using the 'reboot' command or use your VPS restart server command</li>
