@@ -25,9 +25,9 @@ chmod 770 $INSTALL_LOCATION
 ## Now download the main script
 curl https://raw.githubusercontent.com/Geordie-R/nodescripts/master/communitytools | sudo tee /home/remmecommunity/install.sh > /home/remmecommunity/install.sh
 ## Do some find and replaces
-sudo -i sed -i "s/REPLACED_YOURDOMAINORIP/$DOMAIN_OR_IP/g" /home/remmecommunity/install.sh
-sudo -i sed -i "s/REPLACED_REMMECORERELEASE/$REMME_CORE_RELEASE/g" /home/remmecommunity/install.sh
-sudo -i sed -i "s/REPLACED_INSTALLLOCATION/$INSTALL_LOCATION/g" /home/remmecommunity/install.sh
+sudo -i sed -i "s^REPLACED_YOURDOMAINORIP^$DOMAIN_OR_IP^g" /home/remmecommunity/install.sh
+sudo -i sed -i "s^REPLACED_REMMECORERELEASE^$REMME_CORE_RELEASE^g" /home/remmecommunity/install.sh
+sudo -i sed -i "s^REPLACED_INSTALLLOCATION^$INSTALL_LOCATION^g" /home/remmecommunity/install.sh
 sudo chmod 770 /home/remmecommunity/install.sh
 /home/remmecommunity/install.sh
  
