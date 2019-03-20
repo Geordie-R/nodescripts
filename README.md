@@ -15,7 +15,7 @@
  ``` 
 ## Parameters Start ##
 export REMME_CORE_RELEASE="0.7.0-alpha"
-export DOMAIN_OR_IP="your-domain-or-ip-here.com"
+export DOMAIN_OR_IP="yourdomainoriphere.com"
 export INSTALL_LOCATION="/home/remmecommunity/"
 ## Parameters End ##
 ## Lets make a directory called remmecommunity and not care if it exists
