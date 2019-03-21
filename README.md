@@ -83,22 +83,22 @@ ls
   </p>
 You will see the files.
 <br />
-<p>Try all four of the scripts
+<p>Try all four of the scripts when inside /home/remmecommunity  
   
   ```
-  stop.sh
-  ```
-  
-  ```
-  start.sh
+  ./stop.sh
   ```
   
   ```
-  check.sh
+  ./start.sh
   ```
   
   ```
-  checkssl.sh
+  ./check.sh
+  ```
+  
+  ```
+  ./checkssl.sh
   ```
 <p>
 Another way to call the scripts is to call the absolute path of the scripts like so so that its just one command.</p>
