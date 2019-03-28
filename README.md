@@ -56,7 +56,7 @@ sudo chmod 770 /home/remmecommunity/install.sh
   
   .  If you have a domain name on your node type your domain name in place of your-domain-or-ip-here.com. if you had a domain called mynoderules.com then this would become 
   ```
-  export DOMAIN=mynoderules.com
+  export DOMAIN_OR_IP=mynoderules.com
   ``` 
   . If you have not bought a domain name input your ip address instead. So this would become 
   ```
