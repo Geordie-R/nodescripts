@@ -64,9 +64,6 @@ sudo chmod 770 /home/remmecommunity/install.sh
   ``` 
   where those numbers represent your nodes ip address. Be sure to change it.</li>
 <li>Once that is done copy all of the code in notepad by going to Edit > Select All then Edit > Copy.  Then paste it into your command prompt or whichever terminal you are using e.g. putty.</li>
-  
-  <li>Perform a reboot of your server by either using the 'reboot' command or use your VPS restart server command</li>
-<li>Close any command prompt or terminal windows and reconnect to your node</li>
 </ol>
   </p>
   
@@ -119,10 +116,4 @@ Another way to call the scripts is to call the absolute path of the scripts like
 /home/remmecommunity/checkssl.sh
 ```
 
-
-<p>When you reboot the server it will automatically run the following code below after 3 seconds</p>
-  
-  ```
-  /home/remmecommunity/start.sh
-  ```
 <p style='weight:bold;'>Catch me on telegram if you need anything!</p>
