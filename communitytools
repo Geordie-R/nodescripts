@@ -20,8 +20,7 @@ export startfile="start.sh"
 export stopfile="stop.sh"	
 export checkhttpfile="check.sh"	
 export checkhttpsfile="checkssl.sh"	
-## do not modify the line below
-export rcstartup="/etc/rc.local"
+
 ## Just a few text colour parameters below: ignore them
 export green=`tput setaf 2`
 export red=`tput setaf 1`
@@ -84,25 +83,6 @@ echo "cd $REMME_CORE_PATH" >> "$stopfile"
 echo "sudo make stop" >> "$stopfile"
 
 ### End of Create Stop.sh File ###
-
-if [ -e $rcstartup ] ; then	
-echo "startup file already exists - ${green}thats fine ${reset}"
-chmod 775 $rcstartup 
-else
-	echo "$rcstartup flle doesnt exist, we will create it!"
-	touch $rcstartup	
-	chmod 775 $rcstartup	
-fi
-
-if grep -q "$COMMUNITYPATH$startfile" "$rcstartup"; then
-     echo "${green}Its already configured to start at startup! You're good to go!${reset}"
-     
-else
-echo '#!/bin/sh -e' >> "$rcstartup"
-echo 'sleep 3s' >> "$rcstartup" ##added a 3 seconds wait for safety to make sure server is more settled
-echo "$COMMUNITYPATH$startfile" >> "$rcstartup"
-echo "${green}Complete ${reset}"
-fi
 
 
 ##Remove the checkhttp.sh file if it exists as we might be applying a new version number at the top of this script
