@@ -34,8 +34,8 @@ sudo chmod 770 /home/remmecommunity/install.sh
  ```
   
   
-<ol><li>Copy and paste the code above into your putty window or command prompt</li>
-  <li>Change the parameters at the top in the parameters section.  Change
+<ol><li>Copy and paste the code above into your favourite text editor like notepad</li>
+  <li>Then change the parameters at the top of the text document in the parameters section.  Change
    
    ```
    export REMME_CORE_RELEASE=0.7.0-alpha
