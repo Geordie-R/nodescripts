@@ -1,5 +1,7 @@
 <h1>Community Tools - Readme </h1>
 
+<h3> These are the old sawtooth scripts which have been left here</h3>
+
 <h3>NOTE: You should have a working remme installation before you perform these next steps.</h3>
 
 <p>The communitytools script creates 4 scripts:</p>
